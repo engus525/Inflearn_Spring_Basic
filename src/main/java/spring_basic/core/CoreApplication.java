@@ -1,4 +1,4 @@
-package jpa_basic.core;
+package spring_basic.core;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

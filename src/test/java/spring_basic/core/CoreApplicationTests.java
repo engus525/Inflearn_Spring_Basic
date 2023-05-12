@@ -1,4 +1,4 @@
-package jpa_basic.core;
+package spring_basic.core;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
