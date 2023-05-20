@@ -11,8 +11,6 @@ public class MemberApp
 {
     public static void main(String[] args)
     {
-//        AppConfig appConfig = new AppConfig();
-//        MemberService memberService = appConfig.memberService();
 
         //Spring Context
         ApplicationContext ac = new AnnotationConfigApplicationContext(AppConfig.class);

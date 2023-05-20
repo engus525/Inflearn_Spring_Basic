@@ -18,24 +18,29 @@ public class AppConfig
     @Bean
     public MemberService memberService()
     {
+        System.out.println("AppConfig.memberService");
         return new MemberServiceImpl(memberRepository());
     }
 
     @Bean
     public OrderService orderService()
     {
-        return new OrderServiceImpl(memberRepository(), discountPolicy());
+        System.out.println("AppConfig.orderService");
+//        return new OrderServiceImpl(memberRepository(), discountPolicy());
+        return null;
     }
 
     @Bean
-    public static DiscountPolicy discountPolicy()
+    public DiscountPolicy discountPolicy()
     {
+        //return new FixDiscountPolicy();
         return new RateDiscountPolicy();
     }
 
     @Bean
-    public static MemberRepository memberRepository()
+    public MemberRepository memberRepository()
     {
+        System.out.println("AppConfig.memberRepository");
         return new MemoryMemberRepository();
     }
 }

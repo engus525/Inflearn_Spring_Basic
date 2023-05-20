@@ -1,5 +1,9 @@
 package spring_basic.core.member;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter @Setter
 public class Member
 {
     private Long id;
@@ -10,36 +14,6 @@ public class Member
     {
         this.id = id;
         this.name = name;
-        this.grade = grade;
-    }
-
-    public Long getId()
-    {
-        return id;
-    }
-
-    public void setId(Long id)
-    {
-        this.id = id;
-    }
-
-    public String getName()
-    {
-        return name;
-    }
-
-    public void setName(String name)
-    {
-        this.name = name;
-    }
-
-    public Grade getGrade()
-    {
-        return grade;
-    }
-
-    public void setGrade(Grade grade)
-    {
         this.grade = grade;
     }
 }
