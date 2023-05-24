@@ -3,6 +3,7 @@ package spring_basic.core.order;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import spring_basic.core.discount.FixDiscountPolicy;
+import spring_basic.core.discount.RateDiscountPolicy;
 import spring_basic.core.member.Grade;
 import spring_basic.core.member.Member;
 import spring_basic.core.member.MemberRepository;
@@ -20,7 +21,7 @@ class OrderServiceImplTest
         memberRepository.save(new Member(1L,"A", Grade.VIP));
 
         //when
-        OrderServiceImpl orderService = new OrderServiceImpl(new MemoryMemberRepository(),new FixDiscountPolicy());
+        OrderServiceImpl orderService = new OrderServiceImpl(new MemoryMemberRepository(),new RateDiscountPolicy());
         Order order = orderService.createOrder(1L, "item", 10000);
 
         //then

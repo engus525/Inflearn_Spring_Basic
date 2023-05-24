@@ -3,7 +3,11 @@ package spring_basic.core.order;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import spring_basic.core.AppConfig;
+import spring_basic.core.AutoConfig;
+import spring_basic.core.discount.DiscountPolicy;
 import spring_basic.core.member.Grade;
 import spring_basic.core.member.Member;
 import spring_basic.core.member.MemberService;
@@ -35,5 +39,12 @@ public class OrderServiceTest
 
         //then
         Assertions.assertThat(order.getDiscountPrice()).isEqualTo(1000);
+    }
+    
+    @Test
+    public void autowiredFieldName() throws Exception
+    {
+        ApplicationContext ac = new AnnotationConfigApplicationContext(AutoConfig.class);
+        OrderServiceImpl bean = ac.getBean(OrderServiceImpl.class);
     }
 }
