@@ -2,9 +2,11 @@ package spring_basic.core.scope;
 
 import jakarta.annotation.PostConstruct;
 import jakarta.annotation.PreDestroy;
+import jakarta.inject.Provider;
 import lombok.RequiredArgsConstructor;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
@@ -41,7 +43,7 @@ public class SingletonWithPrototypeTest1
         assertThat(logic1).isEqualTo(1);
 
         int logic2 = bean2.logic();
-        assertThat(logic2).isEqualTo(2);
+        assertThat(logic2).isEqualTo(1);
 
     }
 
@@ -49,10 +51,11 @@ public class SingletonWithPrototypeTest1
     @RequiredArgsConstructor
     static class ClientBean
     {
-        private final PrototypeBean prototypeBean;
+        private final Provider<PrototypeBean> prototypeBeanProvider;
 
         public int logic()
         {
+            PrototypeBean prototypeBean = prototypeBeanProvider.get();
             prototypeBean.addCount();
             return prototypeBean.getCount();
         }
