@@ -13,18 +13,16 @@ import spring_basic.core.common.Mylogger;
 public class LogDemoController
 {
     private final LogDemoService logDemoService;
-    private final ObjectProvider<Mylogger> myloggerProvider;
+    private final Mylogger mylogger;
 
     @RequestMapping("log-demo")
     @ResponseBody//View 화면이 없이 문자만 반환하고싶을때
     public String logDemo(HttpServletRequest request) throws InterruptedException
     {
         String requestURL = request.getRequestURL().toString();
-        Mylogger mylogger = myloggerProvider.getObject();
         mylogger.setRequestURL(requestURL);
 
         mylogger.log("controller test");
-        Thread.sleep(5000);
         logDemoService.logic("testId");
         return "OK";
     }
